@@ -7,6 +7,10 @@ var app = express();
 require('./middlewares/appMiddleware')(app);
 
 // Routers
+app.get('/', function (req, res) {
+  res.sendFile('../client/index.html')
+});
+
 app.use('/api', api);
 
 // 404 Error Handling
