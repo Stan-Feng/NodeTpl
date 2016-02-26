@@ -1,15 +1,15 @@
-var express = require('express');
-var logger = require('./utils/logger');
+const express = require('express');
+const app = express();
 
-var api = require('./apis/api');
+const api = require('./apis/api');
+const config = require('./config/config');
+const logger = require('./utils/logger');
 
-var app = express();
+// Connect to db
+require('mongoose').connect(config.db.url);
+
+// Set up middlewares
 require('./middlewares/appMiddleware')(app);
-
-// Routers
-app.get('/', function (req, res) {
-  res.sendFile('../client/index.html')
-});
 
 app.use('/api', api);
 
