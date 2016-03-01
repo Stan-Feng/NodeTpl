@@ -1,9 +1,9 @@
-var Post = require('./postModel');
-var _ = require('lodash');
+const Post = require('./postModel');
+const _ = require('lodash');
 
 exports.params = function(req, res, next, id) {
   Post.findById(id)
-    .populate('author categories')
+    .populate('author', 'username')
     .exec()
     .then(function(post) {
       if (!post) {
@@ -69,4 +69,3 @@ exports.delete = function(req, res, next) {
     }
   });
 };
-Status 

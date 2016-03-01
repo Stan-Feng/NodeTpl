@@ -4,7 +4,7 @@
   "description": "A node app template for future used",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -14,16 +14,19 @@
     "Node",
     "Express"
   ],
-  "author": "StanFeng",
+  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Stan-Feng/NodeTpl/issues"
   },
   "homepage": "https://github.com/Stan-Feng/NodeTpl#readme",
   "dependencies": {
-    "body-parser": "^1.14.2",
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.15.0",
     "colors": "^1.1.2",
     "express": "^4.13.3",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.7.0",
     "lodash": "^4.0.0",
     "mongoose": "^4.4.4",
     "morgan": "^1.6.1"
