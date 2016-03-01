@@ -10,7 +10,7 @@ exports.decodeToken = function () {
   return (req, res, next) => {
     if (req.query && req.query.hasOwnProperty('access_token')) {
       // Namespacing with json web token
-      req.headers.authrization = 'Bearer ' + req.query.access_token;
+      req.headers.authorization = 'Bearer ' + req.headers.access_token;
     }
 
     checkToken(req, res, next);
@@ -19,9 +19,10 @@ exports.decodeToken = function () {
 
 exports.getFreshUser = function () {
   return function (req, res, next) {
-    User.findById(req.user_id)
+    User.findById(req.user._id)
       .then(user => {
         if (!user) {
+          console.log(req.user_id);
           res.status(401).send('Unauthorized');
         }
 

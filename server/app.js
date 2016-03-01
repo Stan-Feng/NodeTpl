@@ -22,9 +22,11 @@ app.use('/auth', auth);
 // 404 Error Handling
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
-    res.status(401).send('Invalid Token');
+    console.log(err);
+    return res.status(401).send('Invalid Token');
+  } else {
+    res.status(500).json({ err: err, msg: 'Oops!!'});
   }
-  res.status(500).json({ err: err, msg: 'Oops!!'});
 });
 
 module.exports = app;
